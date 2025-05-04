@@ -1,12 +1,47 @@
-# React + Vite
+# 🧑‍💻 Diyaeddin Habdo - Full Stack Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal developer portfolio website!  
+This site showcases my background, technical skills, and selected projects.
 
-Currently, two official plugins are available:
+🔗 **Live Website:** [diyaeddin-habdo.github.io/portfolio](https://diyaeddin-habdo.github.io/portfolio)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React.js, HTML5, CSS3, JavaScript
+- **Backend (Projects):** ASP.NET Core, Node.js
+- **Mobile:** Flutter
+- **Database:** MSSQL, ADO.NET
+- **Other Tools:** Git, GitHub, RESTful APIs, Windows Services
+
+---
+
+## 📁 Featured Projects
+
+| Project | Description |
+|--------|-------------|
+| 🏦 **Banking System** (WinForms) | Simulates customer management and financial transactions with 3-tier architecture |
+| 📄 **Internship Tracker** (Web) | Upload, review, and approval flow for internship documents |
+| ☕ **Cafe Order App** (Mobile) | Order management system for cafe waiters, kitchen, and cashiers |
+| 💾 **Database Backup Service** (Win Service) | Automates periodic SQL Server backups with error logging |
+
+---
+
+## 👨‍🎓 Education
+
+**B.Sc. in Computer Engineering**  
+Malatya Turgut Özal University, Turkey  
+Graduation Year: **2025**
+
+---
+
+## 📬 Contact
+
+- 📧 Email: [diyaeddinhabdo@gmail.com](mailto:diyaeddinhabdo@gmail.com)
+- 💼 LinkedIn: [linkedin.com/in/diyaeddin-habdo-0b26a3236](https://www.linkedin.com/in/diyaeddin-habdo-0b26a3236)
+- 🐙 GitHub: [github.com/Diyaeddin-Habdo](https://github.com/Diyaeddin-Habdo)
+
+---
+
+> Built with ❤️ using React and deployed via GitHub Pages.
