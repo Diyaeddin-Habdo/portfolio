@@ -10,9 +10,10 @@ This site showcases my background, technical skills, and selected projects.
 ## 🛠️ Tech Stack
 
 - **Frontend:** React.js, HTML5, CSS3, JavaScript
-- **Backend (Projects):** ASP.NET Core, Node.js
+- **Backend (Projects):** ASP.NET Core, RESTful APIs
 - **Mobile:** Flutter
-- **Database:** MSSQL, ADO.NET
+- **Mobile:** Windows Forms
+- **Database:** MSSQL, ADO.NET , Dapper
 - **Other Tools:** Git, GitHub, RESTful APIs, Windows Services
 
 ---
