@@ -73,7 +73,7 @@ const Hero = () => {
           View Projects
         </a>
         <a
-        href="/DiyaeddinHabdoCV.pdf"
+        href="https://diyaeddin-habdo.github.io/portfolio/DiyaeddinHabdoCV.pdf"
         download={true}
         className="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition"
       >
