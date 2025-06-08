@@ -45,7 +45,7 @@ const About = () => {
           </div>
           <div className="bg-blue-50 p-4 rounded-lg shadow hover:shadow-md transition">
             <p className="font-semibold text-blue-600">📧 Email</p>
-            <p className="text-gray-700">diyaeddinhabdo@gmail.com</p>
+            <p className="text-gray-700">diyahabdo@gmail.com</p>
           </div>
         </motion.div>
       </div>
