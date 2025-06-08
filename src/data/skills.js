@@ -5,6 +5,7 @@ const skills = [
     'T-SQL',
     'MSSQL',
     'ADO.NET',
+    'Dapper',
     '.NET Framework',
     'ASP.NET Core',
     'RESTful APIs',
