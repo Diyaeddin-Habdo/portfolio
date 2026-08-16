@@ -1,56 +1,54 @@
-import React from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
+import SectionHeading from '../components/SectionHeading';
+import { engineeringPrinciples } from '../data/profile';
 
-const About = () => {
-  return (
-    <section
-      id="about"
-      className="min-h-screen flex items-center justify-center bg-white px-6 py-20"
-    >
-      <div className="max-w-4xl w-full text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: -30 }}
+const About = () => (
+  <section id="about" className="border-y border-white/[0.06] bg-white/[0.018] py-24 sm:py-32">
+    <div className="section-shell">
+      <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <SectionHeading
+          index="01"
+          eyebrow="About"
+          title="Software that survives real-world complexity."
+        />
+
+        <Motion.div
+          initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-blue-600 mb-4"
+          className="space-y-6 text-base leading-8 text-[#a8b1aa] sm:text-lg"
         >
-          About Me
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-gray-700 text-lg leading-7 max-w-2xl mx-auto"
-        >
-          I am <strong>Diyaeddin Habdo</strong>, a Computer Engineer graduate from Malatya Turgut Özal University (2025). I love building scalable and efficient full-stack applications using modern frameworks and best practices.
-          <br />
-          I’m highly motivated, detail-oriented, and I enjoy solving real-world problems with code.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left"
-        >
-          <div className="bg-blue-50 p-4 rounded-lg shadow hover:shadow-md transition">
-            <p className="font-semibold text-blue-600">📍 Location</p>
-            <p className="text-gray-700">Istanbul, Turkey</p>
-          </div>
-          <div className="bg-blue-50 p-4 rounded-lg shadow hover:shadow-md transition">
-            <p className="font-semibold text-blue-600">🎓 Education</p>
-            <p className="text-gray-700">Bachelor's Degree in Computer Engineering | Malatya Turgut Özal University | 2025</p>
-          </div>
-          <div className="bg-blue-50 p-4 rounded-lg shadow hover:shadow-md transition">
-            <p className="font-semibold text-blue-600">📧 Email</p>
-            <p className="text-gray-700">diyahabdo@gmail.com</p>
-          </div>
-        </motion.div>
+          <p>
+            I&apos;m a Computer Engineering graduate from Malatya Turgut Özal University and currently a
+            Software Engineer at İLSAN Tekstil. My work sits where business rules, secure APIs, data and
+            clear interfaces meet.
+          </p>
+          <p>
+            I enjoy turning operational complexity into dependable products—then carrying those products
+            through deployment, observability and production support.
+          </p>
+        </Motion.div>
       </div>
-    </section>
-  );
-};
+
+      <div className="mt-16 grid gap-4 md:grid-cols-3">
+        {engineeringPrinciples.map((principle, index) => (
+          <Motion.article
+            key={principle.number}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.45, delay: index * 0.08 }}
+            className="surface-card rounded-2xl p-6 sm:p-7"
+          >
+            <span className="font-mono text-xs text-[#b8f24a]">{principle.number}</span>
+            <h3 className="mt-8 text-xl font-bold tracking-[-0.025em] text-white">{principle.title}</h3>
+            <p className="mt-3 text-sm leading-6 text-[#8e9a91]">{principle.description}</p>
+          </Motion.article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default About;

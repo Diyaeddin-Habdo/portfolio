@@ -1,45 +1,46 @@
-import React from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
-import skills from '../data/skills';
+import { motion as Motion } from 'framer-motion';
+import SectionHeading from '../components/SectionHeading';
+import skillGroups from '../data/skills';
 
-const Skills = () => {
-  return (
-    <section
-      id="skills"
-      className="min-h-screen bg-gray-50 px-6 py-20 flex flex-col items-center"
-    >
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl font-bold text-blue-600 mb-12"
-      >
-        Skills
-      </motion.h2>
+const Skills = () => (
+  <section id="skills" className="py-24 sm:py-32">
+    <div className="section-shell">
+      <SectionHeading
+        index="04"
+        eyebrow="Technology"
+        title="A stack built for complete product delivery."
+        description="I work across application layers while keeping architecture, security and operations in view."
+      />
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl w-full"
-      >
-        {skills.map((skill, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
-            className="bg-white border border-gray-200 rounded-xl py-4 px-5 text-center text-base font-semibold text-gray-800 shadow-md hover:shadow-xl hover:bg-blue-50 transition duration-300"
+      <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2 lg:grid-cols-3">
+        {skillGroups.map((group, index) => (
+          <Motion.article
+            key={group.title}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.45, delay: index * 0.05 }}
+            className="bg-[#0d1210] p-6 sm:p-8"
           >
-            {skill}
-          </motion.div>
+            <div className="flex items-center justify-between gap-4">
+              <h3 className="text-xl font-bold tracking-[-0.025em] text-white">{group.title}</h3>
+              <span className="font-mono text-[0.65rem] text-[#b8f24a]">{group.index}</span>
+            </div>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {group.items.map((skill) => (
+                <li
+                  key={skill}
+                  className="rounded-md bg-white/[0.035] px-2.5 py-1.5 text-xs font-semibold text-[#9ca79f]"
+                >
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </Motion.article>
         ))}
-      </motion.div>
-    </section>
-  );
-};
+      </div>
+    </div>
+  </section>
+);
 
 export default Skills;

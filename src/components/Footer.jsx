@@ -1,43 +1,34 @@
-import React from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
+import { FiGithub, FiLinkedin } from 'react-icons/fi';
+import { profile } from '../data/profile';
 
-const Footer = () => {
-  return (
-    // Added border-t and border-gray-200 classes
-    <footer className="bg-gray-100 py-6 px-4 mt-10 border-t border-gray-200">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between text-gray-600 text-sm"
-      >
-        <p className="mb-4 md:mb-0 text-center">
-          © {new Date().getFullYear()} Diyaeddin Habdo. All rights reserved.
-        </p>
-
-        <div className="flex gap-4 text-xl">
-          <a
-            href="https://github.com/Diyaeddin-Habdo"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-blue-600 transition"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/diyaeddin-habdo-0b26a3236"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-blue-600 transition"
-          >
-            <FaLinkedin />
-          </a>
-        </div>
-      </motion.div>
-    </footer>
-  );
-};
+const Footer = () => (
+  <footer className="border-t border-white/[0.07] py-8">
+    <div className="section-shell flex flex-col items-center justify-between gap-5 sm:flex-row">
+      <p className="text-center text-xs text-[#6f7b73] sm:text-left">
+        © {new Date().getFullYear()} {profile.name}. Built with care and React.
+      </p>
+      <div className="flex items-center gap-3">
+        <a
+          href={profile.githubUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="GitHub profile"
+          className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-white/10 text-[#9ca79f] transition hover:border-[#b8f24a]/40 hover:text-[#b8f24a]"
+        >
+          <FiGithub aria-hidden="true" />
+        </a>
+        <a
+          href={profile.linkedinUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn profile"
+          className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-white/10 text-[#9ca79f] transition hover:border-[#b8f24a]/40 hover:text-[#b8f24a]"
+        >
+          <FiLinkedin aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

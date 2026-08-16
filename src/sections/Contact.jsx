@@ -1,64 +1,63 @@
-import React from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhoneAlt, FaLinkedin } from 'react-icons/fa';
+import { motion as Motion } from 'framer-motion';
+import { FiArrowUpRight, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { profile } from '../data/profile';
 
-const Contact = () => {
-  return (
-    <section
-      id="contact"
-      className="min-h-screen bg-white px-6 py-20 flex flex-col items-center justify-center"
+const Contact = () => (
+  <section id="contact" className="pb-24 pt-10 sm:pb-32">
+    <Motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6 }}
+      className="section-shell relative overflow-hidden rounded-[1.75rem] border border-[#b8f24a]/15 bg-[#b8f24a] px-6 py-14 text-[#080b0a] sm:px-12 sm:py-16 lg:px-16"
     >
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl font-bold text-blue-600 mb-12"
-      >
-        Contact Me
-      </motion.h2>
+      <div className="absolute -right-20 -top-24 h-72 w-72 rounded-full border-[48px] border-[#080b0a]/[0.06]" aria-hidden="true" />
+      <div className="relative grid items-end gap-10 lg:grid-cols-[1fr_auto]">
+        <div>
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#304019]">05 / Let&apos;s talk</p>
+          <h2 className="mt-5 max-w-3xl text-4xl font-bold leading-[1.04] tracking-[-0.055em] sm:text-5xl lg:text-6xl">
+            Have a complex problem worth solving?
+          </h2>
+          <p className="mt-5 max-w-2xl text-base leading-7 text-[#33411f] sm:text-lg">
+            I&apos;m always glad to discuss software architecture, product ideas and engineering opportunities.
+          </p>
+        </div>
 
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-3 max-w-4xl w-full text-center">
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="bg-blue-50 p-6 rounded-xl shadow hover:shadow-lg transition"
+        <a
+          href={`mailto:${profile.email}`}
+          className="focus-ring inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#080b0a] text-2xl text-[#b8f24a] transition hover:rotate-6 sm:h-20 sm:w-20"
+          aria-label={`Email ${profile.name}`}
         >
-          <FaEnvelope className="text-blue-600 text-2xl mb-2 mx-auto" />
-          <p className="font-semibold text-gray-700">Email</p>
-          <a href="mailto:diyaeddinhabdo@gmail.com" className="text-blue-600 text-sm">
-            diyahabdo@gmail.com
-          </a>
-        </motion.div>
-
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="bg-blue-50 p-6 rounded-xl shadow hover:shadow-lg transition"
-        >
-          <FaPhoneAlt className="text-blue-600 text-2xl mb-2 mx-auto" />
-          <p className="font-semibold text-gray-700">Phone</p>
-          <a href="tel:+905527262536" className="text-blue-600 text-sm">
-            +90 552 726 25 36
-          </a>
-        </motion.div>
-
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="bg-blue-50 p-6 rounded-xl shadow hover:shadow-lg transition"
-        >
-          <FaLinkedin className="text-blue-600 text-2xl mb-2 mx-auto" />
-          <p className="font-semibold text-gray-700">LinkedIn</p>
-          <a
-            href="https://www.linkedin.com/in/diyaeddin-habdo-0b26a3236"
-            target="_blank"
-            className="text-blue-600 text-sm"
-            rel="noreferrer"
-          >
-            linkedin.com/in/diyaeddin-habdo
-          </a>
-        </motion.div>
+          <FiArrowUpRight aria-hidden="true" />
+        </a>
       </div>
-    </section>
-  );
-};
+
+      <div className="relative mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-[#080b0a]/15 pt-6 text-sm font-bold">
+        <a href={`mailto:${profile.email}`} className="focus-ring inline-flex items-center gap-2 rounded-sm hover:underline">
+          <FiMail aria-hidden="true" />
+          {profile.email}
+        </a>
+        <a
+          href={profile.linkedinUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="focus-ring inline-flex items-center gap-2 rounded-sm hover:underline"
+        >
+          <FiLinkedin aria-hidden="true" />
+          LinkedIn
+        </a>
+        <a
+          href={profile.githubUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="focus-ring inline-flex items-center gap-2 rounded-sm hover:underline"
+        >
+          <FiGithub aria-hidden="true" />
+          GitHub
+        </a>
+      </div>
+    </Motion.div>
+  </section>
+);
 
 export default Contact;
