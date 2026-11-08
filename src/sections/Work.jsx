@@ -10,7 +10,7 @@ const Work = () => (
             <p className="text-sm text-muted tabular-nums md:col-span-1">{String(index + 1).padStart(2, '0')}</p>
 
             <div className="md:col-span-8">
-              <h3 className="text-[clamp(2rem,4.6vw,4.75rem)] font-medium leading-[0.95] tracking-[-0.045em] transition-[color,transform] duration-500 ease-out group-hover:translate-x-3 group-hover:text-accent">
+              <h3 className="text-[clamp(1.75rem,3.2vw,3.25rem)] font-medium leading-[0.95] tracking-[-0.045em] transition-[color,transform] duration-500 ease-out group-hover:translate-x-3 group-hover:text-accent">
                 {item.title}
               </h3>
               <p className="mt-3 text-sm text-muted">

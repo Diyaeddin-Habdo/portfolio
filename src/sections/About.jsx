@@ -34,7 +34,7 @@ const UnitProgress = ({ units }) => (
 const About = () => (
   <Section id="about" label="About" index="01">
     <p
-      className="text-[clamp(1.75rem,3.4vw,3.5rem)] font-medium leading-[1.12] tracking-[-0.03em]"
+      className="text-[clamp(1.5rem,2.4vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.03em]"
       data-words
     >
       {about.split(' ').map((word, index) => (
@@ -47,7 +47,7 @@ const About = () => (
     <div className="mt-20 grid gap-x-5 gap-y-12 md:mt-28 md:grid-cols-3">
       {stats.map((stat) => (
         <div key={stat.label} className="border-t border-line pt-5" data-reveal>
-          <p className="text-[clamp(4rem,7vw,7.5rem)] font-semibold leading-none tracking-[-0.06em] tabular-nums">
+          <p className="text-[clamp(3rem,5vw,5rem)] font-semibold leading-none tracking-[-0.06em] tabular-nums">
             <span data-count={stat.value}>{stat.value}</span>
             <span className="text-accent">{stat.suffix}</span>
           </p>

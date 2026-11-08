@@ -48,6 +48,12 @@ export const playIntro = (root) => {
 
   timeline
     .from(root.querySelectorAll('[data-hero-line]'), { yPercent: 110, duration: 1.3, stagger: 0.12 })
+    .fromTo(
+      root.querySelectorAll('[data-hero-image]'),
+      { clipPath: 'inset(100% 0% 0% 0%)' },
+      { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.4 },
+      0.15,
+    )
     .from(root.querySelectorAll('[data-hero-fade]'), { y: 16, opacity: 0, duration: 0.9, stagger: 0.08 }, '-=0.9');
 
   return timeline;

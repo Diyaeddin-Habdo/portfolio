@@ -1,3 +1,4 @@
+import portrait from '../assets/portrait.webp';
 import { intro, profile } from '../data/profile';
 import { scrollToTarget } from '../lib/motion';
 
@@ -22,18 +23,31 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="mt-20">
-        <h1 className="text-[18.5vw] font-semibold leading-[0.8] tracking-[-0.065em] md:text-[15.4vw]">
-          <span className="line-mask">
-            <span data-hero-line>{profile.firstName}</span>
-          </span>
-          <span className="line-mask md:text-right">
-            <span data-hero-line>
-              {profile.lastName}
-              <span className="text-accent">.</span>
+      <div className="mt-14">
+        <div className="grid grid-cols-12 items-end gap-x-5 gap-y-8">
+          <h1 className="col-span-12 text-[17vw] font-semibold leading-[0.8] tracking-[-0.06em] md:col-span-9 md:text-[11vw] 2xl:text-[10rem]">
+            <span className="line-mask">
+              <span data-hero-line>{profile.firstName}</span>
             </span>
-          </span>
-        </h1>
+            <span className="line-mask">
+              <span data-hero-line>
+                {profile.lastName}
+                <span className="text-accent">.</span>
+              </span>
+            </span>
+          </h1>
+
+          <figure className="order-first col-span-7 sm:col-span-5 md:order-none md:col-span-3">
+            <img
+              src={portrait}
+              alt={`Portrait of ${profile.name}`}
+              width="400"
+              height="400"
+              className="aspect-[4/5] w-full object-cover"
+              data-hero-image
+            />
+          </figure>
+        </div>
 
         <div className="mt-8 grid grid-cols-12 gap-x-5 gap-y-4 border-t border-line pt-5 text-sm md:mt-10">
           <p className="col-span-6 md:col-span-3" data-hero-fade>

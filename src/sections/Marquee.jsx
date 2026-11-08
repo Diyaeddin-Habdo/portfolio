@@ -12,7 +12,7 @@ const MarqueeRow = ({ hidden }) => (
 );
 
 const Marquee = () => (
-  <div className="overflow-hidden border-y border-ink py-5 text-4xl font-medium tracking-tight md:py-7 md:text-6xl">
+  <div className="overflow-hidden border-y border-ink py-5 text-3xl font-medium tracking-tight md:py-6 md:text-5xl">
     <div className="marquee-track flex w-max">
       <MarqueeRow />
       <MarqueeRow hidden />

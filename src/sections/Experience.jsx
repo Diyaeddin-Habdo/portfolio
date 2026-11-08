@@ -16,7 +16,7 @@ const Experience = () => (
 
           <div className="md:col-span-6">
             <div data-reveal>
-              <h3 className="text-3xl font-medium tracking-[-0.03em] md:text-5xl">{job.company}</h3>
+              <h3 className="text-3xl font-medium tracking-[-0.03em] md:text-4xl">{job.company}</h3>
               <p className="mt-2 text-lg text-muted">{job.role}</p>
             </div>
 

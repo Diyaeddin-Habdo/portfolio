@@ -15,7 +15,7 @@ const Contact = () => (
       <SectionLabel index="06">Contact</SectionLabel>
     </div>
 
-    <h2 className="mt-12 text-[17vw] font-semibold leading-[0.82] tracking-[-0.065em] md:mt-16 md:text-[13.5vw]">
+    <h2 className="mt-12 text-[15vw] font-semibold leading-[0.82] tracking-[-0.06em] md:mt-16 md:text-[9vw] 2xl:text-[9rem]">
       <span className="line-mask">
         <span data-reveal>Let&apos;s talk</span>
       </span>
@@ -31,7 +31,7 @@ const Contact = () => (
         <p className="text-sm text-muted">Write to me</p>
         <a
           href={`mailto:${profile.email}`}
-          className="link-underline mt-2 inline-block text-[clamp(1.75rem,3.6vw,3.5rem)] font-medium tracking-[-0.04em] transition-colors hover:text-accent"
+          className="link-underline mt-2 inline-block text-[clamp(1.5rem,2.8vw,2.75rem)] font-medium tracking-[-0.04em] transition-colors hover:text-accent"
         >
           {profile.email}
         </a>

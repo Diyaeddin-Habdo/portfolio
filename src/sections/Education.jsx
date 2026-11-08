@@ -11,7 +11,7 @@ const Education = () => (
             {item.period}
           </p>
           <div className="md:col-span-6">
-            <h3 className="text-2xl font-medium tracking-[-0.03em] md:text-3xl">{item.degree}</h3>
+            <h3 className="text-xl font-medium tracking-[-0.03em] md:text-2xl">{item.degree}</h3>
             <p className="mt-1 text-muted">{item.school}</p>
           </div>
         </li>
@@ -25,7 +25,7 @@ const Education = () => (
       <dl className="grid gap-x-5 gap-y-6 sm:grid-cols-3 md:col-span-6">
         {languages.map((language) => (
           <div key={language.name} className="border-t border-line pt-4" data-reveal>
-            <dt className="text-2xl font-medium tracking-[-0.03em]">{language.name}</dt>
+            <dt className="text-xl font-medium tracking-[-0.03em]">{language.name}</dt>
             <dd className="mt-1 text-sm text-muted">{language.level}</dd>
           </div>
         ))}
