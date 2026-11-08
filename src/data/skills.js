@@ -1,34 +1,34 @@
 const skillGroups = [
   {
-    index: '01',
     title: 'Backend',
-    items: ['C#', '.NET 9', 'ASP.NET Core', 'EF Core', 'REST APIs', 'SignalR'],
+    items: ['C#', '.NET 8/9', 'ASP.NET Core Web API', 'REST', 'EF Core', 'ADO.NET', 'SignalR'],
   },
   {
-    index: '02',
-    title: 'Frontend',
-    items: ['TypeScript', 'React 19', 'JavaScript', 'HTML5', 'CSS3'],
+    title: 'Databases',
+    items: ['PostgreSQL', 'SQL Server', 'T-SQL', 'Schema design', 'Query optimization', 'Redis'],
   },
   {
-    index: '03',
-    title: 'Data',
-    items: ['PostgreSQL', 'SQL Server', 'Redis', 'Dapper', 'Database Design'],
+    title: 'Design & Security',
+    items: ['SOLID', 'Layered architecture', 'Dependency Injection', 'FluentValidation', 'JWT', 'RBAC', 'Rate limiting'],
   },
   {
-    index: '04',
-    title: 'Delivery',
-    items: ['Docker', 'GitHub Actions', 'Nginx', 'Cloudflare', 'Linux'],
+    title: 'Testing',
+    items: ['xUnit', 'Vitest', 'Auth & business logic tests'],
   },
   {
-    index: '05',
-    title: 'Architecture',
-    items: ['Multi-tenancy', 'Layered Architecture', 'Model / DSL Systems', 'AOP', 'SOLID'],
+    title: 'DevOps',
+    items: ['Git', 'GitHub Actions', 'Docker', 'Linux', 'Nginx', 'Cloudflare Tunnel', 'Serilog'],
   },
   {
-    index: '06',
-    title: 'Security',
-    items: ['JWT', 'RBAC', 'Rate Limiting', 'API Security', 'Validation'],
+    title: 'Frontend & Desktop',
+    items: ['React', 'TypeScript', 'JavaScript', 'Tauri'],
+  },
+  {
+    title: 'AI-Assisted',
+    items: ['Claude Code', 'OpenAI Codex', 'Custom skills & agents'],
   },
 ];
+
+export const marqueeItems = ['C#', '.NET', 'PostgreSQL', 'ASP.NET Core', 'EF Core', 'Redis', 'Docker', 'React', 'TypeScript'];
 
 export default skillGroups;

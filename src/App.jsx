@@ -1,36 +1,50 @@
-import './App.css';
+import { useLayoutEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import CustomScrollToTop from './components/CustomScrollToTop';
 import Hero from './sections/Hero';
+import Marquee from './sections/Marquee';
 import About from './sections/About';
 import Experience from './sections/Experience';
-import Projects from './sections/Projects';
+import Work from './sections/Work';
 import Skills from './sections/Skills';
+import Education from './sections/Education';
 import Contact from './sections/Contact';
+import { animateOnScroll, gsap, playIntro, prefersReducedMotion, startSmoothScroll } from './lib/motion';
 
-const App = () => (
-  <div className="min-h-screen overflow-hidden bg-[#080b0a] text-[#f2f5ef]">
-    <div className="pointer-events-none fixed inset-0 z-0 opacity-60" aria-hidden="true">
-      <div className="ambient-grid absolute inset-0" />
-      <div className="absolute -left-32 top-24 h-80 w-80 rounded-full bg-[#b8f24a]/8 blur-[120px]" />
-      <div className="absolute -right-40 top-[44rem] h-96 w-96 rounded-full bg-emerald-400/5 blur-[140px]" />
-    </div>
+const App = () => {
+  const rootRef = useRef(null);
 
-    <div className="relative z-10">
+  useLayoutEffect(() => {
+    if (prefersReducedMotion()) return undefined;
+
+    const stopSmoothScroll = startSmoothScroll();
+    const context = gsap.context(() => {
+      playIntro(rootRef.current);
+      animateOnScroll(rootRef.current);
+    }, rootRef);
+
+    return () => {
+      context.revert();
+      stopSmoothScroll();
+    };
+  }, []);
+
+  return (
+    <div ref={rootRef} className="min-h-screen bg-paper text-ink">
       <Navbar />
       <main>
         <Hero />
+        <Marquee />
         <About />
         <Experience />
-        <Projects />
+        <Work />
         <Skills />
+        <Education />
         <Contact />
       </main>
       <Footer />
-      <CustomScrollToTop />
     </div>
-  </div>
-);
+  );
+};
 
 export default App;

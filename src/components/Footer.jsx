@@ -1,34 +1,39 @@
-import { FiGithub, FiLinkedin } from 'react-icons/fi';
+import { useEffect, useState } from 'react';
 import { profile } from '../data/profile';
+import { scrollToTarget } from '../lib/motion';
 
-const Footer = () => (
-  <footer className="border-t border-white/[0.07] py-8">
-    <div className="section-shell flex flex-col items-center justify-between gap-5 sm:flex-row">
-      <p className="text-center text-xs text-[#6f7b73] sm:text-left">
-        © {new Date().getFullYear()} {profile.name}. Built with care and React.
-      </p>
-      <div className="flex items-center gap-3">
-        <a
-          href={profile.githubUrl}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="GitHub profile"
-          className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-white/10 text-[#9ca79f] transition hover:border-[#b8f24a]/40 hover:text-[#b8f24a]"
+const timeFormat = new Intl.DateTimeFormat('en-GB', {
+  hour: '2-digit',
+  minute: '2-digit',
+  timeZone: profile.timeZone,
+});
+
+const Footer = () => {
+  const [time, setTime] = useState(() => timeFormat.format(new Date()));
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(timeFormat.format(new Date())), 15000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <footer className="shell mt-20 md:mt-28">
+      <div className="grid grid-cols-12 gap-x-5 gap-y-3 border-t border-line py-6 text-sm">
+        <p className="col-span-12 md:col-span-3">© {new Date().getFullYear()} {profile.name}</p>
+        <p className="col-span-6 text-muted md:col-span-3">
+          Malatya · <span className="tabular-nums">{time}</span> GMT+3
+        </p>
+        <p className="col-span-6 text-muted md:col-span-3">Built with React, GSAP & Lenis</p>
+        <button
+          type="button"
+          onClick={() => scrollToTarget(0)}
+          className="link-underline col-span-12 justify-self-start font-medium md:col-span-3 md:justify-self-end"
         >
-          <FiGithub aria-hidden="true" />
-        </a>
-        <a
-          href={profile.linkedinUrl}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="LinkedIn profile"
-          className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-white/10 text-[#9ca79f] transition hover:border-[#b8f24a]/40 hover:text-[#b8f24a]"
-        >
-          <FiLinkedin aria-hidden="true" />
-        </a>
+          Back to top ↑
+        </button>
       </div>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
 
 export default Footer;

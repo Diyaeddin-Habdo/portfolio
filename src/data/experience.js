@@ -1,34 +1,32 @@
 const experience = [
   {
-    company: 'İLSAN Tekstil San. ve Tic. A.Ş.',
+    company: 'İLSAN Tekstil',
     role: 'Software Engineer',
     location: 'Malatya, Türkiye',
     period: 'May 2026 — Present',
     current: true,
-    summary:
-      'Contributing to the full-stack development of an internal, multi-tenant ERP platform that digitizes textile manufacturing workflows.',
     highlights: [
-      'Developing modules for raw material purchasing, inventory, truck planning, waste comparison, Open-End operations and reporting.',
-      'Building business rules, dynamic data tables, formulas and reporting features with .NET 9, EF Core, PostgreSQL, React 19 and TypeScript.',
-      'Extending a model and DSL-driven screen generation platform with reusable lookup, Excel export and data-processing capabilities.',
-      'Improving application security with JWT access and refresh tokens, granular RBAC, rate limiting and strong password policies.',
-      'Supporting real-time and deployment infrastructure with Docker, Nginx, SignalR, Redis and Cloudflare Tunnel.',
+      'Core engineer and top contributor (900+ commits) in a 4-person team building a modular, multi-tenant ERP framework running in production.',
+      'Delivered the Open-End business unit, the first of the factory’s 5 units to go live, end-to-end: from business rules and REST APIs to React/TypeScript UIs.',
+      'Built finance and costing features: customer accounts, payment terms, balance calculations and cost summaries.',
+      'Designed PostgreSQL schemas and improved slow queries and reports through indexing, views, functions and stored procedures.',
+      'Implemented RBAC with JWT access/refresh tokens, session management and login throttling, covered by xUnit tests.',
+      'Built PDF document generation and barcode/label printing integrated into production and shipment workflows.',
+      'Manage the company server and Git infrastructure with Docker, Nginx and Cloudflare Tunnel: deployments, backups and hardening.',
+      'Set up AI-assisted development workflows with Claude Code and Codex: project guidelines, custom skills and agents.',
     ],
-    stack: ['.NET 9', 'React 19', 'TypeScript', 'PostgreSQL', 'Docker'],
+    stack: ['.NET 9', 'ASP.NET Core', 'EF Core', 'PostgreSQL', 'Redis', 'React', 'TypeScript'],
   },
   {
     company: 'Bera Ar-Ge Yazılım',
-    role: 'Software Engineering Intern',
+    role: 'Software Development Intern',
     location: 'Malatya, Türkiye',
     period: 'Jun 2024 — Aug 2024',
-    summary:
-      'Built a full-stack e-commerce application with secure APIs and a role-based management experience.',
     highlights: [
-      'Developed product and user management flows through a role-based admin panel.',
-      'Designed and implemented token-based API authentication for protected operations.',
-      'Applied layered architecture to improve scalability and long-term maintainability.',
+      'Developed an e-commerce web application with a role-based admin panel for product and user management.',
+      'Implemented token-based API authentication and role-based authorization.',
     ],
-    stack: ['ASP.NET Core', 'React', 'SQL Server', 'JWT'],
+    stack: ['ASP.NET Core', 'SQL Server', 'ADO.NET', 'React'],
   },
 ];
 

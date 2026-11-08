@@ -1,39 +1,34 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@theme {
+  --font-sans: "Switzer", "Segoe UI", system-ui, sans-serif;
+  --color-paper: #ffffff;
+  --color-ink: #0c0c0c;
+  --color-muted: #6e6e6e;
+  --color-line: #e4e4e4;
+  --color-accent: #e3241b;
+}
 
 :root {
-  font-family: "Manrope", "Segoe UI", sans-serif;
-  color: #f2f5ef;
-  background: #080b0a;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-paper);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 4.5rem;
 }
 
 body {
   min-width: 320px;
-  min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
-  background: #080b0a;
-}
-
-button,
-a {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
+  background: var(--color-paper);
 }
 
 a {
@@ -41,7 +36,93 @@ a {
   text-decoration: none;
 }
 
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
 ::selection {
-  color: #080b0a;
-  background: #b8f24a;
+  color: var(--color-paper);
+  background: var(--color-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.shell {
+  width: 100%;
+  max-width: 1680px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .shell {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .shell {
+    padding-inline: 2.75rem;
+  }
+}
+
+.line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.22em;
+  margin-bottom: -0.18em;
+}
+
+.line-mask > span {
+  display: block;
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.unit-progress {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-accent) 0 6px,
+    color-mix(in srgb, var(--color-accent) 35%, white) 6px 12px
+  );
+  background-size: 34px 34px;
+  animation: unit-stripes 1.4s linear infinite;
+}
+
+@keyframes unit-stripes {
+  to {
+    background-position: 34px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .unit-progress {
+    animation: none;
+  }
 }

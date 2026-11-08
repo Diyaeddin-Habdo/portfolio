@@ -1,54 +1,63 @@
-import { motion as Motion } from 'framer-motion';
-import SectionHeading from '../components/SectionHeading';
-import { engineeringPrinciples } from '../data/profile';
+import Section from '../components/Section';
+import { about, stats } from '../data/profile';
+
+const unitStyles = {
+  live: 'bg-accent',
+  progress: 'unit-progress',
+  planned: 'bg-line',
+};
+
+const unitLabels = {
+  live: 'Live',
+  progress: 'In progress',
+  planned: 'Planned',
+};
+
+const UnitProgress = ({ units }) => (
+  <div className="mt-6">
+    <div className="flex gap-1.5" role="img" aria-label="1 of 5 factory units live, the second in progress">
+      {units.map((state, index) => (
+        <span key={index} className={`h-2 flex-1 ${unitStyles[state]}`} />
+      ))}
+    </div>
+    <div className="mt-2 flex gap-4 text-xs text-muted">
+      {['live', 'progress'].map((state) => (
+        <span key={state} className="flex items-center gap-1.5">
+          <span className={`h-2 w-2 ${unitStyles[state]}`} />
+          {unitLabels[state]}
+        </span>
+      ))}
+    </div>
+  </div>
+);
 
 const About = () => (
-  <section id="about" className="border-y border-white/[0.06] bg-white/[0.018] py-24 sm:py-32">
-    <div className="section-shell">
-      <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-        <SectionHeading
-          index="01"
-          eyebrow="About"
-          title="Software that survives real-world complexity."
-        />
+  <Section id="about" label="About" index="01">
+    <p
+      className="text-[clamp(1.75rem,3.4vw,3.5rem)] font-medium leading-[1.12] tracking-[-0.03em]"
+      data-words
+    >
+      {about.split(' ').map((word, index) => (
+        <span key={index} data-word>
+          {word}{' '}
+        </span>
+      ))}
+    </p>
 
-        <Motion.div
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6 text-base leading-8 text-[#a8b1aa] sm:text-lg"
-        >
-          <p>
-            I&apos;m a Computer Engineering graduate from Malatya Turgut Özal University and currently a
-            Software Engineer at İLSAN Tekstil. My work sits where business rules, secure APIs, data and
-            clear interfaces meet.
+    <div className="mt-20 grid gap-x-5 gap-y-12 md:mt-28 md:grid-cols-3">
+      {stats.map((stat) => (
+        <div key={stat.label} className="border-t border-line pt-5" data-reveal>
+          <p className="text-[clamp(4rem,7vw,7.5rem)] font-semibold leading-none tracking-[-0.06em] tabular-nums">
+            <span data-count={stat.value}>{stat.value}</span>
+            <span className="text-accent">{stat.suffix}</span>
           </p>
-          <p>
-            I enjoy turning operational complexity into dependable products—then carrying those products
-            through deployment, observability and production support.
-          </p>
-        </Motion.div>
-      </div>
-
-      <div className="mt-16 grid gap-4 md:grid-cols-3">
-        {engineeringPrinciples.map((principle, index) => (
-          <Motion.article
-            key={principle.number}
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.45, delay: index * 0.08 }}
-            className="surface-card rounded-2xl p-6 sm:p-7"
-          >
-            <span className="font-mono text-xs text-[#b8f24a]">{principle.number}</span>
-            <h3 className="mt-8 text-xl font-bold tracking-[-0.025em] text-white">{principle.title}</h3>
-            <p className="mt-3 text-sm leading-6 text-[#8e9a91]">{principle.description}</p>
-          </Motion.article>
-        ))}
-      </div>
+          <p className="mt-4 font-medium">{stat.label}</p>
+          <p className="mt-1 max-w-xs text-sm leading-relaxed text-muted">{stat.description}</p>
+          {stat.units && <UnitProgress units={stat.units} />}
+        </div>
+      ))}
     </div>
-  </section>
+  </Section>
 );
 
 export default About;

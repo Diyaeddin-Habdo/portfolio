@@ -1,86 +1,106 @@
-import { useState } from 'react';
-import { FiDownload, FiMenu, FiX } from 'react-icons/fi';
+import { useEffect, useState } from 'react';
 import { profile } from '../data/profile';
+import { scrollToTarget } from '../lib/motion';
 
-const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Work', href: '#projects' },
-  { label: 'Stack', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
+const links = [
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'work', label: 'Work' },
+  { id: 'stack', label: 'Stack' },
+  { id: 'education', label: 'Education' },
 ];
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const cvUrl = `${import.meta.env.BASE_URL}${profile.cvFileName}`;
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const closeMenu = () => setIsMenuOpen(false);
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }, [isOpen]);
+
+  const navigate = (event, target) => {
+    event.preventDefault();
+    setIsOpen(false);
+    scrollToTarget(target);
+  };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.07] bg-[#080b0a]/85 backdrop-blur-xl">
-      <div className="section-shell flex h-[4.75rem] items-center justify-between">
-        <a href="#home" onClick={closeMenu} className="focus-ring flex items-center gap-3 rounded-full">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-[#b8f24a] font-mono text-sm font-bold text-[#080b0a]">
-            DH
-          </span>
-          <span className="hidden text-sm font-bold tracking-[-0.02em] text-white sm:inline">
-            Diyaeddin Habdo
-          </span>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
+        isScrolled || isOpen ? 'bg-paper/85 backdrop-blur-md' : 'bg-transparent'
+      }`}
+    >
+      <nav className="shell flex h-16 items-center justify-between gap-6 text-sm md:grid md:grid-cols-12 md:gap-x-5">
+        <a
+          href="#top"
+          onClick={(event) => navigate(event, 0)}
+          className="font-medium md:col-span-3"
+        >
+          {profile.name}
+          <span className="text-accent">.</span>
         </a>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="focus-ring rounded-sm text-xs font-semibold uppercase tracking-[0.14em] text-[#9ca79f] transition hover:text-white"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <a
-            href={cvUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="focus-ring hidden items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-xs font-bold text-white transition hover:border-[#b8f24a]/50 hover:bg-[#b8f24a]/5 sm:flex"
-          >
-            <FiDownload aria-hidden="true" />
-            Resume
-          </a>
-          <button
-            type="button"
-            onClick={() => setIsMenuOpen((current) => !current)}
-            className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-xl text-white md:hidden"
-            aria-label={isMenuOpen ? 'Close navigation' : 'Open navigation'}
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? <FiX /> : <FiMenu />}
-          </button>
-        </div>
-      </div>
-
-      {isMenuOpen && (
-        <nav className="border-t border-white/[0.07] bg-[#080b0a] px-4 py-4 md:hidden" aria-label="Mobile navigation">
-          <div className="section-shell flex flex-col">
-            {navLinks.map((link) => (
+        <ul className="hidden items-center gap-6 md:col-span-6 md:flex">
+          {links.map((link) => (
+            <li key={link.id}>
               <a
-                key={link.href}
-                href={link.href}
-                onClick={closeMenu}
-                className="focus-ring border-b border-white/[0.06] py-4 text-sm font-semibold text-[#c6cec8] last:border-0"
+                href={`#${link.id}`}
+                onClick={(event) => navigate(event, `#${link.id}`)}
+                className="link-underline pb-0.5"
               >
                 {link.label}
               </a>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href="#contact"
+          onClick={(event) => navigate(event, '#contact')}
+          className="group hidden items-center justify-end gap-2 font-medium md:col-span-3 md:flex"
+        >
+          <span className="h-2 w-2 rounded-full bg-accent transition-transform duration-300 group-hover:scale-150" />
+          Let&apos;s talk
+        </a>
+
+        <button
+          type="button"
+          onClick={() => setIsOpen((open) => !open)}
+          className="font-medium md:hidden"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+        >
+          {isOpen ? 'Close' : 'Menu'}
+        </button>
+      </nav>
+
+      {isOpen && (
+        <div id="mobile-menu" className="shell flex h-[calc(100svh-4rem)] flex-col justify-between pb-8 md:hidden">
+          <ul className="border-t border-ink">
+            {[...links, { id: 'contact', label: 'Contact' }].map((link, index) => (
+              <li key={link.id} className="border-b border-line">
+                <a
+                  href={`#${link.id}`}
+                  onClick={(event) => navigate(event, `#${link.id}`)}
+                  className="flex items-baseline justify-between py-4 text-4xl font-medium tracking-tight"
+                >
+                  {link.label}
+                  <span className="text-sm text-muted tabular-nums">0{index + 1}</span>
+                </a>
+              </li>
             ))}
-            <a href={cvUrl} target="_blank" rel="noreferrer" className="accent-button mt-4">
-              <FiDownload aria-hidden="true" />
-              View resume
-            </a>
-          </div>
-        </nav>
+          </ul>
+          <a href={`mailto:${profile.email}`} className="text-sm text-muted">
+            {profile.email}
+          </a>
+        </div>
       )}
     </header>
   );
